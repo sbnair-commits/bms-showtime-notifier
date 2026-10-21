@@ -2,6 +2,7 @@ alerted.json
 alerted.json.tmp
 __pycache__/
 *.pyc
+.env
 
 # Match Visual Studio build outputs inside the repos directory
 **/bin/
