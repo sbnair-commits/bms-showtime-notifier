@@ -1,25 +1,22 @@
 # BookMyShow Ticket Tracker
 
-A lightweight Python script that automatically monitors **BookMyShow** for movie ticket availability and sends instant alerts directly to your **Telegram** bot when bookings open.
+A lightweight Python script that automatically monitors BookMyShow for movie ticket availability and sends instant alerts directly to your Telegram bot when bookings open.
 
-## Features
-- **Real-time Monitoring:** Regularly checks the availability status of targeted movies.
-- **Instant Alerts:** Sends a Telegram notification the moment tickets go live.
-- **State Management:** Tracks alert history locally (`alerted.json`) to prevent duplicate spam notifications.
-- **Secure Configuration:** Zero hardcoded API keys; utilizes secure system environment variables.
+## 🚀 Features
 
----
+* **Real-time Monitoring:** Regularly checks the availability status of targeted movies.
+* **Instant Alerts:** Sends a Telegram notification the moment tickets go live.
+* **State Management:** Tracks alert history locally (`alerted.json`) to prevent duplicate spam notifications.
+* **Secure Configuration:** Zero hardcoded API keys; utilizes secure system environment variables.
 
-## Prerequisites
+## 📋 Prerequisites
 
 Before running the script, ensure you have the following installed and configured:
-- **Python 3.x**
-- A **Telegram Bot Token** (Generated via [@BotFather](https://t.me))
-- Your **Telegram Chat ID**
+* **Python 3.x**
+* **A Telegram Bot Token** (Generated via [@BotFather](https://t.me))
+* **Your Telegram Chat ID** (Can be retrieved via bots like `@userinfobot`)
 
----
-
-## Installation
+## 🛠️ Installation
 
 1. **Clone the repository:**
    ```bash
@@ -33,11 +30,9 @@ Before running the script, ensure you have the following installed and configure
    pip install requests beautifulsoup4
    ```
 
----
+## ⚙️ Configuration & Environment Variables
 
-## Configuration & Environment Variables
-
-This project uses system environment variables to securely handle sensitive credentials. Do not hardcode your tokens into the script file.
+This project uses system environment variables to securely handle sensitive credentials. **Do not hardcode your tokens into the script file.**
 
 ### 1. Setting up Local Variables (Windows Command Prompt)
 Run the following commands in your terminal before launching the script:
@@ -52,9 +47,15 @@ export TG_TOKEN="your_telegram_bot_token_here"
 export TG_CHAT_ID="your_telegram_chat_id_here"
 ```
 
----
+### 3. Targeting a Movie / Theater
+*(⚠️ Note to developer: Replace this section with how your script actually works!)*
+To specify which movie to track, you must [pass the URL as an argument / update the config.json file / edit the target variable in tracker.py]. For example:
+```bash
+# Example if using CLI arguments:
+python tracker.py --url "https://bookmyshow.com..."
+```
 
-## Usage
+## 💻 Usage
 
 Run the script directly from your terminal:
 ```bash
@@ -62,16 +63,16 @@ python tracker.py
 ```
 
 ### Running as a System Service (Raspberry Pi / Linux)
-To run this continuously in the background on a Raspberry Pi, it is recommended to configure it as a `systemd` service:
+To run this continuously in the background, it is recommended to configure it as a `systemd` service:
 
-1. Create a service file:
+1. **Create a service file:**
    ```bash
    sudo nano /etc/systemd/system/bms-tracker.service
    ```
-2. Paste the following configuration, ensuring you provide your actual environment tokens:
+
+2. **Paste the following configuration** (ensure you update your working directory and tokens):
    ```ini
-   [Unit]
-   Description=BookMyShow Ticket Tracker Service
+   [Unit] Description=BookMyShow Ticket Tracker Service
    After=network.target
 
    [Service]
@@ -86,14 +87,14 @@ To run this continuously in the background on a Raspberry Pi, it is recommended 
    [Install]
    WantedBy=multi-user.target
    ```
-3. Enable and start the service:
+
+3. **Enable and start the service:**
    ```bash
    sudo systemctl daemon-reload
    sudo systemctl enable bms-tracker.service
    sudo systemctl start bms-tracker.service
    ```
 
----
+## 📄 License
 
-## License
 Distributed under the MIT License. See `LICENSE` for more information.
