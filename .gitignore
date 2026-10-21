@@ -1,0 +1,11 @@
+alerted.json
+alerted.json.tmp
+__pycache__/
+*.pyc
+
+# Match Visual Studio build outputs inside the repos directory
+**/bin/
+**/obj/
+**/.vs/
+**/*.suo
+**/*.user
