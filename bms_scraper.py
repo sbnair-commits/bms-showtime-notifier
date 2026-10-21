@@ -5,16 +5,17 @@ import time
 import requests
 
 # --- SETTINGS ---
-MOVIE_CODE = "ET00518674"
+MOVIE_CODE = "ET00518674"    # Jailer 2
 MOVIE_NAME = "Jailer 2"
-REGION_CODE = "TRIV"
+REGION_CODE = "TRIV"         # TRIVANDRUM
 TARGET_DATE = "20261022"     # YYYYMMDD -- update this; a past date never alerts
 CHECK_EVERY_SECONDS = 300    # 5 minutes between rounds
 PAUSE_BETWEEN_THEATRES = 2   # seconds between requests inside a round
+# the MOVIE_CODE, REGION_CODE, TARGET_DATE can be found in the official BookMyShow URL
 
 # venue code -> name shown in the alert. Add or remove theatres here.
 VENUES = {
-    "ATYY": "ANAND theatre",
+    "ATYY": "ANAND theatre",      # just some example movie theatres
     "PMNK": "PVR Mymoon, Kochi",
 }
 

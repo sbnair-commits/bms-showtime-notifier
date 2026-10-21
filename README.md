@@ -48,18 +48,17 @@ export TG_CHAT_ID="your_telegram_chat_id_here"
 ```
 
 ### 3. Targeting a Movie / Theater
-*(⚠️ Note to developer: Replace this section with how your script actually works!)*
-To specify which movie to track, you must [pass the URL as an argument / update the config.json file / edit the target variable in tracker.py]. For example:
+*(⚠️ Note to developer: Replace this placeholder block with your script's actual logic, such as a config.json snippet or CLI argument example)*
+To specify which movie or cinema hall to track, pass the target URL directly as a command-line argument:
 ```bash
-# Example if using CLI arguments:
-python tracker.py --url "https://bookmyshow.com..."
+python bms_scraper.py --url "https://bookmyshow.com..."
 ```
 
 ## 💻 Usage
 
 Run the script directly from your terminal:
 ```bash
-python tracker.py
+python bms_scraper.py
 ```
 
 ### Running as a System Service (Raspberry Pi / Linux)
@@ -67,12 +66,13 @@ To run this continuously in the background, it is recommended to configure it as
 
 1. **Create a service file:**
    ```bash
-   sudo nano /etc/systemd/system/bms-tracker.service
+   sudo nano /etc/systemd/system/bms-scraper.service
    ```
 
 2. **Paste the following configuration** (ensure you update your working directory and tokens):
    ```ini
-   [Unit] Description=BookMyShow Ticket Tracker Service
+   [Unit]
+   Description=BookMyShow Ticket Scraper Service
    After=network.target
 
    [Service]
@@ -81,7 +81,7 @@ To run this continuously in the background, it is recommended to configure it as
    WorkingDirectory=/home/pi/BMS_REPO
    Environment="TG_TOKEN=your_bot_token"
    Environment="TG_CHAT_ID=your_chat_id"
-   ExecStart=/usr/bin/python3 tracker.py
+   ExecStart=/usr/bin/python3 bms_scraper.py
    Restart=on-failure
 
    [Install]
@@ -91,9 +91,14 @@ To run this continuously in the background, it is recommended to configure it as
 3. **Enable and start the service:**
    ```bash
    sudo systemctl daemon-reload
-   sudo systemctl enable bms-tracker.service
-   sudo systemctl start bms-tracker.service
+   sudo systemctl enable bms-scraper.service
+   sudo systemctl start bms-scraper.service
    ```
+
+## 🔍 Troubleshooting
+
+* **403 Forbidden / Cloudflare Errors:** BookMyShow uses strong anti-bot protections. If your script fails to fetch data, ensure your request headers include a valid, modern browser `User-Agent`.
+* **Not Receiving Telegram Alerts:** Double-check that you have initiated a chat with your bot by sending it a `/start` command first, otherwise the API will reject your message.
 
 ## 📄 License
 
